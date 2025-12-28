@@ -11,7 +11,7 @@ export default function Home() {
           <div className="text-center">
             {/* Logo */}
             <div className="mb-8 flex justify-center">
-              <Logo width={250} height={250} showTagline={true} className="text-white" />
+              <Logo width={250} height={250} className="text-white" />
             </div>
             <h1 className="text-3xl md:text-5xl font-bold mb-6 text-balance">
               Welcome to {brandConfig.fullName}

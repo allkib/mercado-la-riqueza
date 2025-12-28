@@ -11,7 +11,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Company Info with Logo */}
           <div>
-            <Logo width={150} height={150} showTagline={true} className="mb-4" />
+            <Logo width={150} height={150} className="mb-4" />
             <p className="text-gray-400 mb-4">{brandConfig.description}</p>
             <p className="text-gray-400 text-sm">
               {brandConfig.contact.address}<br />

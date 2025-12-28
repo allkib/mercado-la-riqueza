@@ -9,10 +9,9 @@ interface LogoProps {
   width?: number
   height?: number
   className?: string
-  showTagline?: boolean
 }
 
-export default function Logo({ width = 200, height = 200, className = '', showTagline = false }: LogoProps) {
+export default function Logo({ width = 200, height = 200, className = '' }: LogoProps) {
   const [imageError, setImageError] = useState(false)
 
   return (
@@ -67,16 +66,6 @@ export default function Logo({ width = 200, height = 200, className = '', showTa
           )}
         </div>
       </Link>
-      {showTagline && (
-        <p 
-          className="mt-4 text-base md:text-lg font-semibold flex items-center gap-2"
-          style={{ color: brandConfig.colors.secondary }}
-        >
-          <span>🍃</span>
-          <span>{brandConfig.tagline}</span>
-          <span>🍃</span>
-        </p>
-      )}
     </div>
   )
 }

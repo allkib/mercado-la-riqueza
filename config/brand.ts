@@ -5,8 +5,8 @@ export const brandConfig = {
   tagline: "Fresh Produce • Great Prices",
   description: "Your neighborhood grocery store offering fresh produce and quality products at affordable prices.",
   
-  // Logo path - Update this path once you add the logo image to /public/images/logo.png
-  logo: "/images/logo.png",
+  // Logo path - Points to /public/images/logo.PNG
+  logo: "/images/logo.PNG",
   
   // Brand Colors - Matching the logo design (dark red, greens, gold/yellow)
   colors: {
