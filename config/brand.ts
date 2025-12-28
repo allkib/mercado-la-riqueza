@@ -7,6 +7,8 @@ export const brandConfig = {
   
   // Logo path - Points to /public/images/logo.png (using lowercase for web compatibility)
   logo: "/images/logo.png",
+  // Site URL - Your actual Netlify domain
+  siteUrl: "https://mercadolariqueza.netlify.app",
   
   // Brand Colors - Matching the logo design (dark red, greens, gold/yellow)
   colors: {

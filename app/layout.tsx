@@ -29,14 +29,22 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     siteName: brandConfig.name,
+    url: brandConfig.siteUrl,
     images: [
       {
-        url: brandConfig.logo,
-        width: 500,
-        height: 500,
+        url: `${brandConfig.siteUrl}${brandConfig.logo}`,
+        width: 1200,
+        height: 1200,
         alt: `${brandConfig.fullName} Logo`,
+        type: 'image/png',
       },
     ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: brandConfig.fullName,
+    description: brandConfig.description,
+    images: [`${brandConfig.siteUrl}${brandConfig.logo}`],
   },
   robots: {
     index: true,
@@ -57,9 +65,24 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="canonical" href="https://mercadolariqueza.com" />
+        <link rel="canonical" href={brandConfig.siteUrl} />
         <link rel="icon" type="image/png" href={brandConfig.logo} />
         <link rel="apple-touch-icon" href={brandConfig.logo} />
+        {/* Open Graph / Facebook / iMessage */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={brandConfig.siteUrl} />
+        <meta property="og:title" content={brandConfig.fullName} />
+        <meta property="og:description" content={brandConfig.description} />
+        <meta property="og:image" content={`${brandConfig.siteUrl}${brandConfig.logo}`} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="1200" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:site_name" content={brandConfig.name} />
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={brandConfig.fullName} />
+        <meta name="twitter:description" content={brandConfig.description} />
+        <meta name="twitter:image" content={`${brandConfig.siteUrl}${brandConfig.logo}`} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

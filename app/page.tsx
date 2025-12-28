@@ -32,17 +32,18 @@ export default function Home() {
               {brandConfig.tagline} • Convenient Location
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              {/* Prices button - Hidden but kept for future use */}
-              {/* <Link
-                href="/prices"
+              <a
+                href={brandConfig.contact.googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-8 py-4 rounded-lg font-bold text-lg transition-all hover:scale-105 warm-shadow"
                 style={{ 
                   backgroundColor: brandConfig.colors.cream,
                   color: brandConfig.colors.primary,
                 }}
               >
-                View Prices
-              </Link> */}
+                Get Directions
+              </a>
               <Link
                 href="/contact"
                 className="px-8 py-4 rounded-lg font-bold text-lg border-3 transition-all hover:scale-105 hover-btn-outline"
