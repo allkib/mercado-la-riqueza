@@ -13,12 +13,30 @@ export const metadata: Metadata = {
   description: brandConfig.description,
   keywords: 'grocery store, fresh produce, Mount Vernon, New York, affordable groceries, Mercado La Riqueza by Monica Haque, Inc.',
   authors: [{ name: brandConfig.fullName }],
+  icons: {
+    icon: [
+      { url: brandConfig.logo, sizes: 'any' },
+      { url: brandConfig.logo, type: 'image/png', sizes: '32x32' },
+      { url: brandConfig.logo, type: 'image/png', sizes: '192x192' },
+    ],
+    apple: [
+      { url: brandConfig.logo, sizes: '180x180', type: 'image/png' },
+    ],
+  },
   openGraph: {
     title: brandConfig.fullName,
     description: brandConfig.description,
     type: 'website',
     locale: 'en_US',
     siteName: brandConfig.name,
+    images: [
+      {
+        url: brandConfig.logo,
+        width: 500,
+        height: 500,
+        alt: `${brandConfig.fullName} Logo`,
+      },
+    ],
   },
   robots: {
     index: true,
@@ -40,6 +58,8 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="canonical" href="https://mercadolariqueza.com" />
+        <link rel="icon" type="image/png" href={brandConfig.logo} />
+        <link rel="apple-touch-icon" href={brandConfig.logo} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
