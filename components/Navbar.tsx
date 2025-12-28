@@ -12,9 +12,7 @@ export default function Navbar() {
     <nav className="bg-white shadow-lg sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20 md:h-24">
-          <Link href="/" className="flex items-center">
-            <Logo width={80} height={80} />
-          </Link>
+          <Logo width={80} height={80} />
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">

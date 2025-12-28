@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { brandConfig } from '@/config/brand'
 
 interface LogoProps {
@@ -14,9 +14,17 @@ interface LogoProps {
 export default function Logo({ width = 200, height = 200, className = '' }: LogoProps) {
   const [imageError, setImageError] = useState(false)
   const [imageSrc, setImageSrc] = useState(brandConfig.logo)
+  const [mounted, setMounted] = useState(false)
+
+  // Ensure component is mounted before handling errors (prevents hydration mismatch)
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   // Try different case variations if initial load fails
   const handleImageError = () => {
+    if (!mounted) return // Don't update state before mount
+    
     if (imageSrc === "/images/logo.png") {
       // Try uppercase version
       setImageSrc("/images/logo.PNG")
@@ -29,6 +37,7 @@ export default function Logo({ width = 200, height = 200, className = '' }: Logo
     }
   }
 
+  // Always render the same structure to prevent hydration mismatch
   return (
     <div className={`flex flex-col items-center ${className}`}>
       <Link href="/" className="flex items-center justify-center">
@@ -42,6 +51,7 @@ export default function Logo({ width = 200, height = 200, className = '' }: Logo
               className="object-contain"
               priority
               onError={handleImageError}
+              style={{ display: 'block' }}
             />
           ) : (
             // Fallback logo design if image doesn't exist
