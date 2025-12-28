@@ -1,4 +1,4 @@
-# Mercado La Riqueza - Grocery Store Website
+# Mercado La Riqueza by Monica Haque, Inc. - Grocery Store Website
 
 A modern, responsive website for Mercado La Riqueza by Monica Haque, Inc. - a fresh produce grocery store in Mount Vernon, New York.
 

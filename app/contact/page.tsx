@@ -64,19 +64,37 @@ export default function ContactPage() {
             <div className="space-y-6">
               <div>
                 <h3 className="font-semibold text-gray-700 mb-2">Address</h3>
-                <p className="text-gray-600">
-                  {brandConfig.contact.address}<br />
-                  {brandConfig.contact.city}, {brandConfig.contact.state} {brandConfig.contact.zipCode}
-                </p>
+                <a
+                  href={brandConfig.contact.googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 hover:text-red-600 transition-colors"
+                >
+                  <p>
+                    {brandConfig.contact.address}<br />
+                    {brandConfig.contact.city}, {brandConfig.contact.state} {brandConfig.contact.zipCode}
+                  </p>
+                  <span className="text-sm text-blue-600">📍 Click to view on Google Maps</span>
+                </a>
               </div>
               <div>
                 <h3 className="font-semibold text-gray-700 mb-2">Phone</h3>
-                <a 
-                  href={`tel:${brandConfig.contact.phone}`}
-                  className="text-gray-600 hover:text-red-600 transition-colors"
-                >
-                  {brandConfig.contact.phone}
-                </a>
+                <div className="space-y-2">
+                  <a 
+                    href={`tel:${brandConfig.contact.phone}`}
+                    className="block text-gray-600 hover:text-red-600 transition-colors"
+                  >
+                    {brandConfig.contact.phone} <span className="text-sm text-gray-500">(Main)</span>
+                  </a>
+                  {brandConfig.contact.phoneSecondary && (
+                    <a 
+                      href={`tel:${brandConfig.contact.phoneSecondary}`}
+                      className="block text-gray-600 hover:text-red-600 transition-colors"
+                    >
+                      {brandConfig.contact.phoneSecondary} <span className="text-sm text-gray-500">(Secondary)</span>
+                    </a>
+                  )}
+                </div>
               </div>
               <div>
                 <h3 className="font-semibold text-gray-700 mb-2">Location</h3>

@@ -65,7 +65,7 @@ export default function QuestionsPage() {
           
           {submitStatus === 'error' && (
             <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
-              Something went wrong. Please try again or call us at {brandConfig.contact.phone}.
+              Something went wrong. Please try again or call us at {brandConfig.contact.phone} or {brandConfig.contact.phoneSecondary}.
             </div>
           )}
 
@@ -179,7 +179,18 @@ export default function QuestionsPage() {
               >
                 <span className="text-xl">📞</span>
                 <span className="font-semibold">{brandConfig.contact.phone}</span>
+                <span className="text-sm text-gray-500">(Main)</span>
               </a>
+              {brandConfig.contact.phoneSecondary && (
+                <a
+                  href={`tel:${brandConfig.contact.phoneSecondary}`}
+                  className="flex items-center gap-2 text-gray-700 hover:text-red-600 transition-colors"
+                >
+                  <span className="text-xl">📞</span>
+                  <span className="font-semibold">{brandConfig.contact.phoneSecondary}</span>
+                  <span className="text-sm text-gray-500">(Secondary)</span>
+                </a>
+              )}
             </div>
           </div>
         </div>
@@ -207,7 +218,7 @@ export default function QuestionsPage() {
             <div>
               <h3 className="font-semibold text-lg mb-2">What are your store hours?</h3>
               <p className="text-gray-600">
-                Please call us at {brandConfig.contact.phone} for current store hours.
+                Please call us at {brandConfig.contact.phone} or {brandConfig.contact.phoneSecondary} for current store hours.
               </p>
             </div>
             <div>

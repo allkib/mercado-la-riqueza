@@ -1,16 +1,17 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Playfair_Display } from 'next/font/google'
 import './globals.css'
 import { brandConfig } from '@/config/brand'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
+const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair' })
 
 export const metadata: Metadata = {
   title: `${brandConfig.fullName} | Fresh Groceries in Mount Vernon, NY`,
   description: brandConfig.description,
-  keywords: 'grocery store, fresh produce, Mount Vernon, New York, affordable groceries, Mercado La Riqueza',
+  keywords: 'grocery store, fresh produce, Mount Vernon, New York, affordable groceries, Mercado La Riqueza by Monica Haque, Inc.',
   authors: [{ name: brandConfig.fullName }],
   openGraph: {
     title: brandConfig.fullName,
@@ -59,7 +60,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.variable} ${playfair.variable} font-sans`}>
         <Navbar />
         <main className="min-h-screen">
           {children}

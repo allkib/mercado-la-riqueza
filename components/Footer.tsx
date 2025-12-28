@@ -6,42 +6,99 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer 
+      className="relative"
+      style={{ 
+        backgroundColor: brandConfig.colors.primaryDark,
+        color: brandConfig.colors.cream
+      }}
+    >
+      {/* Decorative top border */}
+      <div className="h-2" style={{ backgroundColor: brandConfig.colors.gold }}></div>
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Company Info with Logo */}
           <div>
             <Logo width={150} height={150} className="mb-4" />
-            <p className="text-gray-400 mb-4">{brandConfig.description}</p>
-            <p className="text-gray-400 text-sm">
-              {brandConfig.contact.address}<br />
-              {brandConfig.contact.city}, {brandConfig.contact.state} {brandConfig.contact.zipCode}
+            <p className="mb-4" style={{ color: brandConfig.colors.cream, lineHeight: '1.7' }}>
+              {brandConfig.description}
             </p>
+            <a
+              href={brandConfig.contact.googleMapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:underline footer-link"
+              style={{ 
+                color: brandConfig.colors.cream,
+                '--hover-color': brandConfig.colors.gold,
+              } as React.CSSProperties & { '--hover-color': string }}
+            >
+              <p className="text-sm">
+                {brandConfig.contact.address}<br />
+                {brandConfig.contact.city}, {brandConfig.contact.state} {brandConfig.contact.zipCode}
+              </p>
+            </a>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-xl font-bold mb-4" style={{ color: brandConfig.colors.accent }}>
+            <h3 
+              className="text-xl font-bold mb-4" 
+              style={{ 
+                fontFamily: 'var(--font-playfair)',
+                color: brandConfig.colors.gold 
+              }}
+            >
               Quick Links
             </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-3">
               <li>
-                <Link href="/" className="text-gray-400 hover:text-white transition-colors">
+                <Link 
+                  href="/" 
+                  className="transition-colors hover:underline inline-block footer-link"
+                  style={{ 
+                    color: brandConfig.colors.cream,
+                    '--hover-color': brandConfig.colors.gold,
+                  } as React.CSSProperties & { '--hover-color': string }}
+                >
                   Home
                 </Link>
               </li>
-              <li>
-                <Link href="/prices" className="text-gray-400 hover:text-white transition-colors">
+              {/* Prices link - Hidden but kept for future use */}
+              {/* <li>
+                <Link 
+                  href="/prices"
+                  className="transition-colors hover:underline inline-block footer-link"
+                  style={{ 
+                    color: brandConfig.colors.cream,
+                    '--hover-color': brandConfig.colors.gold,
+                  } as React.CSSProperties & { '--hover-color': string }}
+                >
                   Prices
                 </Link>
-              </li>
+              </li> */}
               <li>
-                <Link href="/contact" className="text-gray-400 hover:text-white transition-colors">
+                <Link 
+                  href="/contact"
+                  className="transition-colors hover:underline inline-block footer-link"
+                  style={{ 
+                    color: brandConfig.colors.cream,
+                    '--hover-color': brandConfig.colors.gold,
+                  } as React.CSSProperties & { '--hover-color': string }}
+                >
                   Contact Us
                 </Link>
               </li>
               <li>
-                <Link href="/questions" className="text-gray-400 hover:text-white transition-colors">
+                <Link 
+                  href="/questions"
+                  className="transition-colors hover:underline inline-block footer-link"
+                  style={{ 
+                    color: brandConfig.colors.cream,
+                    '--hover-color': brandConfig.colors.gold,
+                  } as React.CSSProperties & { '--hover-color': string }}
+                >
                   Questions
                 </Link>
               </li>
@@ -50,31 +107,72 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-xl font-bold mb-4" style={{ color: brandConfig.colors.accent }}>
+            <h3 
+              className="text-xl font-bold mb-4"
+              style={{ 
+                fontFamily: 'var(--font-playfair)',
+                color: brandConfig.colors.gold 
+              }}
+            >
               Contact Us
             </h3>
-            <p className="text-gray-400 mb-2">
-              <strong>Phone:</strong>{' '}
-              <a 
-                href={`tel:${brandConfig.contact.phone}`}
-                className="hover:text-white transition-colors"
+            <p className="mb-2" style={{ color: brandConfig.colors.cream }}>
+              <strong>Phone:</strong>
+              <div className="mt-1 space-y-1">
+                <a 
+                  href={`tel:${brandConfig.contact.phone}`}
+                  className="block transition-colors hover:underline footer-link"
+                  style={{ 
+                    color: brandConfig.colors.cream,
+                    '--hover-color': brandConfig.colors.gold,
+                  } as React.CSSProperties & { '--hover-color': string }}
+                >
+                  {brandConfig.contact.phone} <span className="text-xs">(Main)</span>
+                </a>
+                {brandConfig.contact.phoneSecondary && (
+                  <a 
+                    href={`tel:${brandConfig.contact.phoneSecondary}`}
+                    className="block transition-colors hover:underline footer-link"
+                    style={{ 
+                      color: brandConfig.colors.cream,
+                      '--hover-color': brandConfig.colors.gold,
+                    } as React.CSSProperties & { '--hover-color': string }}
+                  >
+                    {brandConfig.contact.phoneSecondary} <span className="text-xs">(Secondary)</span>
+                  </a>
+                )}
+              </div>
+            </p>
+            <p className="mb-4" style={{ color: brandConfig.colors.cream }}>
+              <strong>Address:</strong><br />
+              <a
+                href={brandConfig.contact.googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:underline footer-link inline-block"
+                style={{ 
+                  color: brandConfig.colors.cream,
+                  '--hover-color': brandConfig.colors.gold,
+                } as React.CSSProperties & { '--hover-color': string }}
               >
-                {brandConfig.contact.phone}
+                {brandConfig.contact.address}<br />
+                {brandConfig.contact.city}, {brandConfig.contact.state} {brandConfig.contact.zipCode}
               </a>
             </p>
-            <p className="text-gray-400 mb-4">
-              <strong>Address:</strong><br />
-              {brandConfig.contact.address}<br />
-              {brandConfig.contact.city}, {brandConfig.contact.state} {brandConfig.contact.zipCode}
-            </p>
-            <p className="text-gray-400 text-sm">
+            <p className="text-sm" style={{ color: brandConfig.colors.cream }}>
               Conveniently located next to the laundromat!
             </p>
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
-          <p>&copy; {currentYear} {brandConfig.fullName}. All rights reserved.</p>
+        <div 
+          className="border-t mt-8 pt-8 text-center text-sm"
+          style={{ 
+            borderColor: brandConfig.colors.primary,
+            color: brandConfig.colors.cream
+          }}
+        >
+          <p>&copy; {currentYear} {brandConfig.fullName} All rights reserved.</p>
         </div>
       </div>
     </footer>
