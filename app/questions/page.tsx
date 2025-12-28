@@ -23,17 +23,23 @@ export default function QuestionsPage() {
     setSubmitStatus('idle')
     
     try {
-      const response = await fetch('/api/questions', {
+      // Submit to Netlify Forms (URL-encoded format)
+      const formPayload = new URLSearchParams({
+        'form-name': 'questions',
+        'name': data.name,
+        'email': data.email,
+        'phone': data.phone || '',
+        'category': data.category || '',
+        'question': data.question,
+      })
+
+      const response = await fetch('/', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: formPayload.toString(),
       })
       
-      const result = await response.json()
-      
-      if (result.success) {
+      if (response.ok) {
         setSubmitStatus('success')
         reset()
       } else {
@@ -69,7 +75,30 @@ export default function QuestionsPage() {
             </div>
           )}
 
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          {/* Hidden form for Netlify to parse during build */}
+          <form name="questions" method="POST" data-netlify="true" hidden>
+            <input type="text" name="name" />
+            <input type="email" name="email" />
+            <input type="tel" name="phone" />
+            <select name="category">
+              <option value="">Select a category</option>
+              <option value="products">Products & Inventory</option>
+              <option value="hours">Store Hours</option>
+              <option value="pricing">Pricing</option>
+              <option value="location">Location & Directions</option>
+              <option value="other">Other</option>
+            </select>
+            <textarea name="question"></textarea>
+          </form>
+
+          <form 
+            name="questions" 
+            method="POST" 
+            data-netlify="true"
+            onSubmit={handleSubmit(onSubmit)} 
+            className="space-y-6"
+          >
+            <input type="hidden" name="form-name" value="questions" />
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                 Your Name *

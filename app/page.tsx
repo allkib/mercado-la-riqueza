@@ -158,15 +158,15 @@ export default function Home() {
                       href={brandConfig.contact.googleMapsUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="transition-colors hover:underline"
+                      className="transition-colors hover:underline block"
                       style={{ 
                         color: brandConfig.colors.primary,
                       }}
                     >
-                      <p style={{ color: brandConfig.colors.textLight }}>
+                      <span style={{ color: brandConfig.colors.textLight }}>
                         {brandConfig.contact.address}<br />
                         {brandConfig.contact.city}, {brandConfig.contact.state} {brandConfig.contact.zipCode}
-                      </p>
+                      </span>
                     </a>
                   </div>
                 </div>

@@ -28,16 +28,16 @@ export default function Footer() {
               href={brandConfig.contact.googleMapsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-colors hover:underline footer-link"
+              className="transition-colors hover:underline footer-link block"
               style={{ 
                 color: brandConfig.colors.cream,
                 '--hover-color': brandConfig.colors.gold,
               } as React.CSSProperties & { '--hover-color': string }}
             >
-              <p className="text-sm">
+              <span className="text-sm block">
                 {brandConfig.contact.address}<br />
                 {brandConfig.contact.city}, {brandConfig.contact.state} {brandConfig.contact.zipCode}
-              </p>
+              </span>
             </a>
           </div>
 
@@ -143,13 +143,13 @@ export default function Footer() {
                 )}
               </div>
             </p>
-            <p className="mb-4" style={{ color: brandConfig.colors.cream }}>
-              <strong>Address:</strong><br />
+            <div className="mb-4" style={{ color: brandConfig.colors.cream }}>
+              <p><strong>Address:</strong></p>
               <a
                 href={brandConfig.contact.googleMapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition-colors hover:underline footer-link inline-block"
+                className="transition-colors hover:underline footer-link block mt-1"
                 style={{ 
                   color: brandConfig.colors.cream,
                   '--hover-color': brandConfig.colors.gold,
@@ -158,7 +158,7 @@ export default function Footer() {
                 {brandConfig.contact.address}<br />
                 {brandConfig.contact.city}, {brandConfig.contact.state} {brandConfig.contact.zipCode}
               </a>
-            </p>
+            </div>
             <p className="text-sm" style={{ color: brandConfig.colors.cream }}>
               Conveniently located next to the laundromat!
             </p>

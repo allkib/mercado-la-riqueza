@@ -22,17 +22,22 @@ export default function ContactPage() {
     setSubmitStatus('idle')
     
     try {
-      const response = await fetch('/api/contact', {
+      // Submit to Netlify Forms (URL-encoded format)
+      const formPayload = new URLSearchParams({
+        'form-name': 'contact',
+        'name': data.name,
+        'email': data.email,
+        'phone': data.phone || '',
+        'message': data.message,
+      })
+
+      const response = await fetch('/', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: formPayload.toString(),
       })
       
-      const result = await response.json()
-      
-      if (result.success) {
+      if (response.ok) {
         setSubmitStatus('success')
         reset()
       } else {
@@ -68,13 +73,13 @@ export default function ContactPage() {
                   href={brandConfig.contact.googleMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-red-600 transition-colors"
+                  className="text-gray-600 hover:text-red-600 transition-colors block"
                 >
-                  <p>
+                  <span className="block">
                     {brandConfig.contact.address}<br />
                     {brandConfig.contact.city}, {brandConfig.contact.state} {brandConfig.contact.zipCode}
-                  </p>
-                  <span className="text-sm text-blue-600">📍 Click to view on Google Maps</span>
+                  </span>
+                  <span className="text-sm text-blue-600 block mt-1">📍 Click to view on Google Maps</span>
                 </a>
               </div>
               <div>
@@ -129,7 +134,22 @@ export default function ContactPage() {
               </div>
             )}
 
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+            {/* Hidden form for Netlify to parse during build */}
+            <form name="contact" method="POST" data-netlify="true" hidden>
+              <input type="text" name="name" />
+              <input type="email" name="email" />
+              <input type="tel" name="phone" />
+              <textarea name="message"></textarea>
+            </form>
+
+            <form 
+              name="contact" 
+              method="POST" 
+              data-netlify="true"
+              onSubmit={handleSubmit(onSubmit)} 
+              className="space-y-6"
+            >
+              <input type="hidden" name="form-name" value="contact" />
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                   Name *
