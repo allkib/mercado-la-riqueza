@@ -1,18 +1,23 @@
 import Link from 'next/link'
 import { brandConfig } from '@/config/brand'
+import Logo from '@/components/Logo'
 
 export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-red-600 to-red-700 text-white py-20 md:py-32">
+      <section className="relative bg-gradient-to-r from-red-700 to-red-800 text-white py-20 md:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">
-              Welcome to {brandConfig.name}
+            {/* Logo */}
+            <div className="mb-8 flex justify-center">
+              <Logo width={250} height={250} showTagline={true} className="text-white" />
+            </div>
+            <h1 className="text-3xl md:text-5xl font-bold mb-6 text-balance">
+              Welcome to {brandConfig.fullName}
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-red-100 max-w-3xl mx-auto text-balance">
-              Fresh Produce • Great Prices • Convenient Location
+              {brandConfig.tagline} • Convenient Location
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -137,9 +142,9 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Ready to Shop?
           </h2>
-          <p className="text-xl mb-8 text-green-100">
-            Visit us today for fresh produce and great prices!
-          </p>
+            <p className="text-xl mb-8 text-green-100">
+              {brandConfig.tagline}
+            </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/prices"

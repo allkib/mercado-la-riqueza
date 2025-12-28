@@ -66,11 +66,20 @@ See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed deployment instructions.
 - ✅ `@netlify/plugin-nextjs` plugin for optimal Next.js support
 - ✅ All necessary build settings configured
 
+## Adding Your Logo
+
+1. Place your logo image file in `/public/images/logo.png`
+2. The logo should be a PNG file with a transparent or white background
+3. Recommended size: 500x500px or larger for high quality
+4. The logo will automatically appear in the navbar, footer, and homepage
+5. If the logo file is not found, a styled fallback will be displayed
+
 ## Customizing Brand Identity
 
 All brand colors and information can be easily customized in `config/brand.ts`. Simply update the values in the `brandConfig` object:
 
-- **Colors**: Change `primary`, `secondary`, `accent` colors
+- **Logo**: Update the logo path if your logo file has a different name/location
+- **Colors**: Change `primary`, `secondary`, `accent` colors to match your brand
 - **Contact Info**: Update address, phone, email
 - **Company Info**: Modify name, tagline, description
 

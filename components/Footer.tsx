@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { brandConfig } from '@/config/brand'
+import Logo from './Logo'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -8,11 +9,9 @@ export default function Footer() {
     <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Company Info */}
+          {/* Company Info with Logo */}
           <div>
-            <h3 className="text-xl font-bold mb-4" style={{ color: brandConfig.colors.accent }}>
-              {brandConfig.name}
-            </h3>
+            <Logo width={150} height={150} showTagline={true} className="mb-4" />
             <p className="text-gray-400 mb-4">{brandConfig.description}</p>
             <p className="text-gray-400 text-sm">
               {brandConfig.contact.address}<br />

@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { brandConfig } from '@/config/brand'
+import Logo from './Logo'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -10,11 +11,9 @@ export default function Navbar() {
   return (
     <nav className="bg-white shadow-lg sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-20 md:h-24">
           <Link href="/" className="flex items-center">
-            <span className="text-xl font-bold" style={{ color: brandConfig.colors.primary }}>
-              {brandConfig.name}
-            </span>
+            <Logo width={80} height={80} showTagline={false} />
           </Link>
 
           {/* Desktop Navigation */}

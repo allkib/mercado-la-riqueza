@@ -1,20 +1,26 @@
 // Brand Configuration - Easily swap colors and brand identity
 export const brandConfig = {
   name: "Mercado La Riqueza",
-  fullName: "MERCADO LA RIQUEZA BY MONICA HAQUE, INC.",
-  tagline: "Fresh Produce, Great Prices",
+  fullName: "Mercado la Riqueza by Monica Haque, Inc.",
+  tagline: "Fresh Produce • Great Prices",
   description: "Your neighborhood grocery store offering fresh produce and quality products at affordable prices.",
   
-  // Brand Colors - Easily customize here
+  // Logo path - Update this path once you add the logo image to /public/images/logo.png
+  logo: "/images/logo.png",
+  
+  // Brand Colors - Matching the logo design (dark red, greens, gold/yellow)
   colors: {
-    primary: "#dc2626",      // Red - Main brand color
-    primaryDark: "#991b1b",  // Darker red
+    primary: "#8B1A1A",      // Dark red - Matching logo border
+    primaryDark: "#6B1414",  // Darker red
     primaryLight: "#fecaca", // Light red
-    secondary: "#16a34a",    // Green - For fresh produce emphasis
-    secondaryDark: "#15803d",
-    accent: "#f97316",       // Orange - For highlights
+    secondary: "#166534",    // Dark green - Matching logo green banner
+    secondaryDark: "#14532d",
+    secondaryLight: "#22c55e", // Bright green for produce
+    accent: "#D97706",       // Gold/Amber - Matching logo gold elements
+    gold: "#F59E0B",         // Gold - For stars and highlights
     text: "#1f2937",         // Dark gray for text
     textLight: "#6b7280",    // Light gray for secondary text
+    cream: "#FEF3C7",        // Cream color - Matching logo text
     background: "#ffffff",   // White background
     backgroundAlt: "#f9fafb", // Light gray background
   },
