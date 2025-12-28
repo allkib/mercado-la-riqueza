@@ -59,12 +59,16 @@ This website is configured and ready to deploy to **Netlify**!
 3. Netlify will auto-detect the Next.js configuration
 4. Click "Deploy" - it's that simple!
 
-See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed deployment instructions.
-
-**Note**: The website includes:
+**Configuration includes:**
 - ✅ `netlify.toml` configuration file
 - ✅ `@netlify/plugin-nextjs` plugin for optimal Next.js support
 - ✅ All necessary build settings configured
+- ✅ Netlify Forms integration ready (enable in dashboard)
+
+**After Deployment:**
+1. Enable form detection in Netlify (Forms → Enable form detection)
+2. Set up email notifications (Site Settings → Forms → Form notifications)
+3. Update `siteUrl` in `config/brand.ts` with your actual domain if needed
 
 ## Adding Your Logo
 
@@ -107,11 +111,14 @@ mercado-la-riqueza/
 
 ## Form Integration
 
-The contact and questions forms are connected to API routes (`/api/contact` and `/api/questions`). Currently, they log submissions to the console. To make them fully functional:
+The contact and questions forms are configured to work with **Netlify Forms**:
 
-1. ✅ API routes are already created in `app/api/` directory
-2. Add email service integration (e.g., SendGrid, Resend, Nodemailer)
-3. Optionally, save submissions to a database
+1. ✅ Forms are set up with Netlify Forms integration
+2. Enable form detection in Netlify dashboard
+3. Set up email notifications in Netlify (Site Settings → Forms → Form notifications)
+4. Forms will automatically send email notifications when submitted
+
+The API routes in `app/api/` are kept for potential future use but are not currently active since forms submit directly to Netlify.
 
 ## SEO Features
 
