@@ -41,17 +41,30 @@ export default function Logo({ width = 200, height = 200, className = '' }: Logo
   return (
     <div className={`flex flex-col items-center ${className}`}>
       <Link href="/" className="flex items-center justify-center">
-        <div className="relative" style={{ width: `${width}px`, height: `${height}px` }}>
+        <div 
+          className="relative" 
+          style={{ 
+            width: `${width}px`, 
+            height: `${height}px`,
+            minWidth: `${width}px`,
+            minHeight: `${height}px`,
+          }}
+        >
           {!imageError ? (
             <Image
               src={imageSrc}
               alt={`${brandConfig.fullName} Logo`}
               width={width}
               height={height}
-              className="object-contain"
               priority
               onError={handleImageError}
-              style={{ display: 'block' }}
+              unoptimized={true}
+              style={{ 
+                width: '100%',
+                height: '100%',
+                objectFit: 'contain',
+                display: 'block',
+              }}
             />
           ) : (
             // Fallback logo design if image doesn't exist
