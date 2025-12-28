@@ -48,6 +48,24 @@ npm run build
 npm start
 ```
 
+## Deployment
+
+This website is configured and ready to deploy to **Netlify**! 
+
+### Quick Deploy to Netlify
+
+1. Push your code to GitHub/GitLab/Bitbucket
+2. Connect your repository to Netlify
+3. Netlify will auto-detect the Next.js configuration
+4. Click "Deploy" - it's that simple!
+
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed deployment instructions.
+
+**Note**: The website includes:
+- ✅ `netlify.toml` configuration file
+- ✅ `@netlify/plugin-nextjs` plugin for optimal Next.js support
+- ✅ All necessary build settings configured
+
 ## Customizing Brand Identity
 
 All brand colors and information can be easily customized in `config/brand.ts`. Simply update the values in the `brandConfig` object:
@@ -80,11 +98,11 @@ mercado-la-riqueza/
 
 ## Form Integration
 
-The contact and questions forms currently log data to the console. To integrate with a backend:
+The contact and questions forms are connected to API routes (`/api/contact` and `/api/questions`). Currently, they log submissions to the console. To make them fully functional:
 
-1. Create API routes in `app/api/` directory
-2. Update form submission handlers to send data to your API
-3. Consider adding email service integration (e.g., SendGrid, Resend)
+1. ✅ API routes are already created in `app/api/` directory
+2. Add email service integration (e.g., SendGrid, Resend, Nodemailer)
+3. Optionally, save submissions to a database
 
 ## SEO Features
 
