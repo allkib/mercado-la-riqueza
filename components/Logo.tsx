@@ -13,6 +13,21 @@ interface LogoProps {
 
 export default function Logo({ width = 200, height = 200, className = '' }: LogoProps) {
   const [imageError, setImageError] = useState(false)
+  const [imageSrc, setImageSrc] = useState(brandConfig.logo)
+
+  // Try different case variations if initial load fails
+  const handleImageError = () => {
+    if (imageSrc === "/images/logo.png") {
+      // Try uppercase version
+      setImageSrc("/images/logo.PNG")
+    } else if (imageSrc === "/images/logo.PNG") {
+      // Try lowercase version
+      setImageSrc("/images/logo.png")
+    } else {
+      // Both failed, show fallback
+      setImageError(true)
+    }
+  }
 
   return (
     <div className={`flex flex-col items-center ${className}`}>
@@ -20,13 +35,13 @@ export default function Logo({ width = 200, height = 200, className = '' }: Logo
         <div className="relative" style={{ width: `${width}px`, height: `${height}px` }}>
           {!imageError ? (
             <Image
-              src={brandConfig.logo}
+              src={imageSrc}
               alt={`${brandConfig.fullName} Logo`}
               width={width}
               height={height}
               className="object-contain"
               priority
-              onError={() => setImageError(true)}
+              onError={handleImageError}
             />
           ) : (
             // Fallback logo design if image doesn't exist
